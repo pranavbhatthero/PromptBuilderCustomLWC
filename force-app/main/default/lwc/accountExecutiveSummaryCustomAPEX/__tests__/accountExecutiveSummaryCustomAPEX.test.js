@@ -1,5 +1,5 @@
-import { createElement } from 'lwc';
-// import { createElement } from '@lwc/engine-dom';
+// import { createElement } from 'lwc';
+import { createElement } from '@lwc/engine-dom';
 import AccountExecutiveSummaryCustomAPEX from 'c/accountExecutiveSummaryCustomAPEX';
 
 describe('c-account-executive-summary-custom-apex', () => {
