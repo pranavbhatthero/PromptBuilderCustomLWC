@@ -1,0 +1,69 @@
+<template>
+    <lightning-card icon-name="standard:article" variant="base">
+        <div slot="title">AI Generated Account Executive Summary</div>
+        <div class="slds-var-m-around_medium">
+        </div>
+        <lightning-button
+            variant="brand"
+            label="Generate Account Executive Summary"
+            onclick={handleClick}
+            class="slds-align_absolute-center"
+        ></lightning-button>
+    </lightning-card>
+    <div class="spinner">
+        <template lwc:if={isLoading}>
+            <lightning-spinner
+                alternative-text="Loading"
+                variant="brand"
+                size="large"
+            >
+            </lightning-spinner>
+        </template>
+    </div>
+        <template lwc:if={isSummaryGenerated}>
+            <lightning-card variant="base">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item padding="around-small" size="12">
+                        <div>
+                            <lightning-input
+                                type="toggle"
+                                message-toggle-active="ON"
+                                message-toggle-inactive="OFF"
+                                label="Edit Summary"
+                                class="slds-float_left"
+                                onchange={handleToggleChange}
+                            >
+                            </lightning-input>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12">
+                        <template lwc:if={isPreview}>
+                            <div>
+                                <lightning-formatted-rich-text
+                                    value={aeSummaryBody}
+                                ></lightning-formatted-rich-text>
+                            </div>
+                            <div>
+                                <div>
+                                    <lightning-button
+                                    variant="brand"
+                                    label="Publish"
+                                    onclick={handlePublish}
+                                    class="slds-align_absolute-center"
+                                    ></lightning-button>
+                                </div>
+                            </div>
+                        </template>
+                        <template lwc:else>
+                            <div>
+                                <lightning-input-rich-text
+                                    value={aeSummaryBody}
+                                    oninput={handleSummaryChange}
+                                ></lightning-input-rich-text>
+                            </div>
+                        </template>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-card>
+        </template>
+</template>
