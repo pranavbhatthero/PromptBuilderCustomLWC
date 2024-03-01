@@ -3,6 +3,7 @@
         <div slot="title">AI Generated Account Executive Summary</div>
         <div class="slds-var-m-around_medium">
         </div>
+        <!-- Generate Account Executive Summary Button -->
         <lightning-button
             variant="brand"
             label="Generate Account Executive Summary"
@@ -10,6 +11,7 @@
             class="slds-align_absolute-center"
         ></lightning-button>
     </lightning-card>
+    <!-- Spinner Component while waiting for response from LLM -->
     <div class="spinner">
         <template lwc:if={isLoading}>
             <lightning-spinner
@@ -20,10 +22,12 @@
             </lightning-spinner>
         </template>
     </div>
+        <!-- If summary is Generated, Display the reponse from LLM to end user -->
         <template lwc:if={isSummaryGenerated}>
             <lightning-card variant="base">
                 <lightning-layout multiple-rows>
                     <lightning-layout-item padding="around-small" size="12">
+                        <!-- If user edits Summary , track change to the Toggle Button -->
                         <div>
                             <lightning-input
                                 type="toggle"
@@ -44,6 +48,7 @@
                                 ></lightning-formatted-rich-text>
                             </div>
                             <div>
+                                <!-- Publish to Salesforce Button -->
                                 <div>
                                     <lightning-button
                                     variant="brand"
@@ -54,6 +59,7 @@
                                 </div>
                             </div>
                         </template>
+                        <!-- If user wants to Edit , let them in Rich Text Web Editor & hide publish button -->
                         <template lwc:else>
                             <div>
                                 <lightning-input-rich-text

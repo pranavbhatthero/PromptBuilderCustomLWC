@@ -16,14 +16,8 @@ public with sharing class AccountSummaryGeneration {
         accountWrappervalue.value = accountObjectInput;
         inputParams.put('Input:Account', accountWrappervalue);
 
-        // modifications or configuration for our model / hyperparamenters
+        // pass prompt with Inputs to our model (as selected in the Prompt Template)
         promptGenerationsInput.inputParams = inputParams;
-        // promptGenerationsInput.additionalConfig                = new ConnectApi.EinsteinLlmAdditionalConfigInput();
-        // promptGenerationsInput.additionalConfig.numGenerations = 1;
-        // promptGenerationsInput.additionalConfig.maxTokens      = 10000;
-        // promptGenerationsInput.additionalConfig.model          = 'gpt-35-turbo';
-        // promptGenerationsInput.additionalConfig.enablePiiMasking  = false;
-        // promptGenerationsInput.additionalConfig.applicationName   = 'PromptBuilderPreview';        
         promptGenerationsInput.isPreview = false;
 
         // call the LLM service through ConnectAPI & consume the response

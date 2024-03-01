@@ -1,6 +1,4 @@
 public with sharing class EinsteinGenerativeGatewayService {
-    // public EinsteinGenerativeGatewayService() {}
-
 
     public static String getPromptTemplateResponse(String promptTemplateDeveloperName, ConnectApi.EinsteinPromptTemplateGenerationsInput input) {
 
@@ -13,12 +11,13 @@ public with sharing class EinsteinGenerativeGatewayService {
            System.debug('Response: ' + response.text);
            return response.text;
            
-        } catch(exception e){
+        } 
+        // Proper exception handling 
+        catch(exception e){
             throw new EinsteinGenerativeGatewayException(e.getMessage());
         } 
     }
   
     public class EinsteinGenerativeGatewayException extends Exception {}
-  
 
 }

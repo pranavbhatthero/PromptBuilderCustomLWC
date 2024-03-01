@@ -1,7 +1,7 @@
 public with sharing class AccountSummaryPromptExtension {
-    // public AccountSummaryPromptExtension() {}
 
-    @InvocableMethod(CapabilityType='FlexTemplate://Account_Executive_Summary_w_Apex') // Matches API Name of template
+    // Invocable Method of CapabilityType 'FlexTemplate' & that it Matches API Name of template
+    @InvocableMethod(CapabilityType='FlexTemplate://Account_Executive_Summary_w_Apex') 
     public static List<Response> getPrompt(List<Request> requests) {
       Request input = requests[0];
       List<Response> responses = new List<Response>();
@@ -13,7 +13,7 @@ public with sharing class AccountSummaryPromptExtension {
       output.Prompt += '\n ';
       output.Prompt += '\n Related Contacts:';
       output.Prompt += '\n ' + JSON.serialize([Select ID, Name, Title From Contact Where AccountId = :input.Account.Id]);
-      System.debug(output.Prompt);
+
       responses.add(output);
       return responses;
     }
